@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Auth;
 
 class PostsController extends Controller
 {
@@ -36,7 +37,24 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = $request->file('image');
+        if(!empty($file)) {
+            $filename = $file->getClientOriginalName();
+            $move = $file->move('../upload', $filename);
+        }else{
+            $filename="";
+        }
+
+        $posts = new Post;
+        $posts->user_id    =    Auth::user()->id;
+        $posts->image      =    $filename;
+        $posts->title      =    $request->title;
+        $posts->text       =    $request->text;
+        $posts->published  =    $request->published;
+        $posts->save(); 
+        return redirect('/');
+
+
     }
 
     /**

@@ -25,7 +25,7 @@
           <tbody>
             @foreach($posts as $post)
             <tr>
-              <td><img src="./upload/{{$post->image}}" width="100"></td>
+              <td><img src="../upload/{{$post->image}}" width="100"></td>
               <td>{{ $post->title }}</td>
               <td>{{ $post->text }}</td>
               <td><a href="{{ url('posts/' . $post->id) }}" class="btn btn-info">詳細</a></td>

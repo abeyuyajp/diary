@@ -7,7 +7,7 @@
                 新規投稿
             </div>
             <div class="card-body">
-                <form method="POST" action="/posts">
+                <form enctype="multipart/form-data" method="POST" action="/posts">
                     @csrf
                     <div class="col-sm-6">
                         <input name="image" type="file">
