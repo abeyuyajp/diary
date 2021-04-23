@@ -77,7 +77,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -89,7 +90,22 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $file = $request->file('image');
+        if(!empty($file)) {
+            $filename = $file->getClientOriginalName();
+            $move = $file->move('../upload', $filename);
+        }else{
+            $filename="";
+        }
+
+        $post = Post::find($id);
+        $posts = Post::where('user_id', Auth::user()->id)->find($request->id);
+        $posts->image      =    $filename;
+        $posts->title      =    $request->title;
+        $posts->text       =    $request->text;
+        $posts->published  =    $request->published;
+        $posts->save(); 
+        return redirect('/');
     }
 
     /**
@@ -100,6 +116,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        return redirect('/');
     }
 }
