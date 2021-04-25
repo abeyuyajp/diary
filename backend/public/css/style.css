@@ -1,18 +1,23 @@
 /*カスタマイズ用*/
+
+/*背景*/
 .bg-cream {
   background-color: #F2EFE4 !important;
 }
 
+/*テキスト*/
 .text-dark-gray {
   color: #333333 !important;
 }
 
+/*ボタン1*/
 .btn-club-green {
   color: #fff;
   background-color: #27AE60;
   border-color: #27AE60;
 }
 
+/*ボタン2*/
 .btn-club-blue {
   color: #fff;
   background-color: #5476AA;
