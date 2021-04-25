@@ -1,16 +1,18 @@
-@extends("layouts.app")
-@section("content")
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                新規投稿
-            </div>
-            <div class="card-body">
+
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">新規投稿</div>
+                
+                <div class="card-body">
                 <form enctype="multipart/form-data" method="POST" action="/posts">
                     @csrf
                     <div class="col-sm-6">
-                        <input name="image" type="file">
+                        <input type="file" name="image">
                     </div>
 
                     <div class="form-group">
@@ -20,23 +22,17 @@
 
                     <div class="form-group">
                         <label for="text" class="control-label">Text</label>
-                        <input class="form-control" name="text" type="text">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="published" class="control-label">date</label>
-                        <input class="form-control" name="published" type="date">
+                        <textarea class="form-control" name="text" style="padding-bottom: 50vh;"></textarea>
                     </div>
 
 
-
-                    <button class="btn btn-primary" type="submit">GO</button>
+                    <button class="btn btn-success d-block" type="submit" style="margin: 0 auto;">GO</button>
                 </form>
+            </div>
+                
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
 @endsection
