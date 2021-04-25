@@ -1,34 +1,35 @@
-@extends("layouts.app")
-@section("content")
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                編集画面
-            </div>
-            <div class="card-body">
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">投稿を編集</div>
+                
+                <div class="card-body">
                 <form method="POST" action="/posts/{{ $post->id }}" class="form-horizontal">
                     @csrf
                     @method('PUT')
                     <div class="col-sm-6">
-                        <input name="image" type="file">
+                        <input type="file" name="image">
                     </div>
-                    <hr>
+
                     <div class="form-group">
                         <label for="title" class="control-label">Title</label>
                         <input class="form-control" name="title" type="text" value="{{ $post->title }}">
                     </div>
-                    <hr>
+
                     <div class="form-group">
                         <label for="text" class="control-label">Text</label>
-                        <input class="form-control" name="text" type="text" value="{{ $post->text }}">
+                        <textarea class="form-control" name="text" style="padding-bottom: 50vh;">{{$post->text}}</textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="published" class="control-label">Date</label>
-                        <input class="form-control" name="published" type="date" value="{{ $post->published }}">
-                    </div>
-                    <button class="btn btn-primary" type="submit">更新</button>
+                    
+                    <button class="btn btn-success d-block" type="submit" style="margin: 0 auto;">更新</button>
                 </form>
+            </div>
+                
+                </div>
             </div>
         </div>
     </div>
