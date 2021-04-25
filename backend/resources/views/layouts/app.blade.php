@@ -17,11 +17,14 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+        <!-- Bootstrap -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <!-- カスタマイズ -->
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
 </head>
-<body>
+<body class="bg-cream">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-cream shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -66,7 +69,7 @@
                                     </form>
                                 </div>
                             </li>
-                            <a href="{{ url('posts/create') }}" class="btn btn-success mb-3">投稿する</a>
+                            <a href="{{ url('posts/create') }}" class="btn btn-club-green mb-3">投稿</a>
                         @endguest
                     </ul>
                 </div>

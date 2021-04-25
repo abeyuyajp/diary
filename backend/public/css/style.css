@@ -1,0 +1,20 @@
+/*カスタマイズ用*/
+.bg-cream {
+  background-color: #F2EFE4 !important;
+}
+
+.text-dark-gray {
+  color: #333333 !important;
+}
+
+.btn-club-green {
+  color: #fff;
+  background-color: #27AE60;
+  border-color: #27AE60;
+}
+
+.btn-club-blue {
+  color: #fff;
+  background-color: #5476AA;
+  border-color: #5476AA;
+}

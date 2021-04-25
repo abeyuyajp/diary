@@ -27,7 +27,7 @@
                         <textarea class="form-control" name="text" style="padding-bottom: 50vh;">{{$post->text}}</textarea>
                     </div>
                     
-                    <button class="btn btn-success d-block" type="submit" style="margin: 0 auto;">更新</button>
+                    <button class="btn btn-club-green d-block" type="submit" style="margin: 0 auto;">更新</button>
                 </form>
             </div>
                 

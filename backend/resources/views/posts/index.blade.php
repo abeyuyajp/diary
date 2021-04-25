@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row text-center">
     <div class="col-sm">
         <!--投稿一覧-->
         @foreach($posts as $post)
@@ -18,6 +18,12 @@
           </a>
         @endforeach
     </div>
+  </div>
+  <!--ページネーション-->
+  <div class="row justify-content-center">
+     <div class="col-md-4">
+        {{ $posts->links() }}
+     </div>
   </div>
 </div>
 @endsection

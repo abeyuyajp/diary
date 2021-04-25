@@ -15,11 +15,11 @@
 
          @if(Auth::id() === $post->user_id)
         <div class="row justify-content-center">
-            <a href="{{ url('posts/' . $post->id . '/edit') }}" class="btn btn-primary">編集</a>
+            <a href="{{ url('posts/' . $post->id . '/edit') }}" class="btn btn-club-green">編集</a>
             <form method="POST" action="/posts/{{ $post->id }}">
                 @csrf 
                 @method('DELETE')
-                <button class="btn btn-danger" type="submit">削除</button>
+                <button class="btn btn-club-blue" type="submit">削除</button>
             </form>
         </div>
         @endif

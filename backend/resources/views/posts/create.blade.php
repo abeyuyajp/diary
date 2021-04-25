@@ -28,7 +28,7 @@
                     </div>
 
 
-                    <button class="btn btn-success d-block" type="submit" style="margin: 0 auto;">GO</button>
+                    <button class="btn btn-club-green d-block" type="submit" style="margin: 0 auto;">GO</button>
                 </form>
             </div>
                 
