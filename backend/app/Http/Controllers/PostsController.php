@@ -50,7 +50,6 @@ class PostsController extends Controller
         $posts->image      =    $filename;
         $posts->title      =    $request->title;
         $posts->text       =    $request->text;
-        $posts->published  =    $request->published;
         $posts->save(); 
         return redirect('/');
 
