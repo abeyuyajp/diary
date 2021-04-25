@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Validator;
 use Auth;
 
 class PostsController extends Controller
@@ -37,6 +38,19 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        //バリデーション
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            "text"  => 'required',
+        ]);
+
+        //バリデーションエラー
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+
         $file = $request->file('image');
         if(!empty($file)) {
             $filename = $file->getClientOriginalName();
@@ -89,6 +103,19 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //バリデーション
+        $validator = Validator::make($request->all(), [
+            'title'=>'required',
+            'text' =>'required',
+        ]);
+
+        //バリデーションエラー
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+
         $file = $request->file('image');
         if(!empty($file)) {
             $filename = $file->getClientOriginalName();

@@ -6,6 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">投稿を編集</div>
+
+                @include('common.errors')
                 
                 <div class="card-body">
                 <form method="POST" action="/posts/{{ $post->id }}" class="form-horizontal">

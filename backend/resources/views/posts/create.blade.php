@@ -8,6 +8,8 @@
             <div class="card">
                 <div class="card-header">新規投稿</div>
                 
+                @include('common.errors')
+                
                 <div class="card-body">
                 <form enctype="multipart/form-data" method="POST" action="/posts">
                     @csrf
