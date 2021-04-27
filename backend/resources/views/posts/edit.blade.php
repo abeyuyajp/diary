@@ -10,11 +10,11 @@
                 @include('common.errors')
                 
                 <div class="card-body">
-                <form method="POST" action="/posts/{{ $post->id }}" class="form-horizontal">
+                <form enctype="multipart/form-data" method="POST" action="/posts/{{ $post->id }}" class="form-horizontal">
                     @csrf
                     @method('PUT')
                     <div class="col-sm-6">
-                        <input type="file" name="image">
+                        <input type="file" name="image" value="{{ asset('storage/image/' . $post->image) }}">
                     </div>
 
                     <div class="form-group">
