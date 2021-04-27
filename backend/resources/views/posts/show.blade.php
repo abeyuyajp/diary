@@ -25,30 +25,35 @@
             @endif
         </div>
 
-        <!-- コメント -->
         <div class="p-3">
-
             <!-- コメントフォーム -->
             @if(Auth::check())
             <form method="POST" action="/comments">
                 @csrf 
                 <input type="hidden" name="post_id" value="{{ $post->id }}">
                 <input type="hidden" name="user_id" value="{{ $post->user->id }}">
-                <div class="form-group">
+                <div class="form-group d-flex">
                     <textarea class="form-control" name="text" placeholder="コメント"></textarea>
+                    <input class="btn btn-club-green" type="submit">
                 </div>
-                <button class="btn btn-club-green d-block" type="submit" style="margin: 0 auto;">投稿</button>
             </form>
             @endif
+
             <!-- コメント表示 -->
-            <ul>
+            <div class="mx-auto" style="width: 80%;">
                 @forelse ($post->comments as $comment)
-                <p>{{ $comment->user->name }}</p>
-                <li>{{ $comment->text }}</li>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="padding: 3vh 3vw;">{{ $comment->user->name }}</th>
+                                <td>{{ $comment->text }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 @empty
-                <li>コメントはまだありません</li>
+                    <p>コメントはまだありません</p>
                 @endforelse
-            </ul>
+            </div>
         </div>
     </div>
 </div>
