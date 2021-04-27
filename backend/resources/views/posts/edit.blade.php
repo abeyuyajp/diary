@@ -14,7 +14,7 @@
                     @csrf
                     @method('PUT')
                     <div class="col-sm-6">
-                        <input type="file" name="image">
+                        <input type="file" name="image" value="public/image/{{$post->image}}">
                     </div>
 
                     <div class="form-group">
