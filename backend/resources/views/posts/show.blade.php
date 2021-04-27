@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
           <div class="card mb-3">
-            <img src="public/image/{{$post->image}}" class="card-img-top" width="100%" height="300">
+            <img src="{{ asset('storage/image/' . $post->image) }}" class="card-img-top" width="100%" height="300">
             <div class="card-body">
                 <h1 class="card-title">{{ $post->title }}</h1>
                 <p class="card-text"><small class="text-muted">{{ $post->user->name }}</small></p>
