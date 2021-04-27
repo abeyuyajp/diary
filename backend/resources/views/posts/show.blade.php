@@ -33,14 +33,15 @@
                 <input type="hidden" name="post_id" value="{{ $post->id }}">
                 <input type="hidden" name="user_id" value="{{ $post->user->id }}">
                 <div class="form-group d-flex">
-                    <textarea class="form-control" name="text" placeholder="コメント"></textarea>
-                    <input class="btn btn-club-green" type="submit">
+                    <textarea class="form-control" name="text" placeholder="日記にメモを残しましょう"></textarea>
+                    <input class="btn btn-club-green" type="submit" value="GO">
                 </div>
             </form>
             @endif
 
             <!-- コメント表示 -->
             <div class="mx-auto" style="width: 80%;">
+                <h2>MEMO</h2>
                 @forelse ($post->comments as $comment)
                     <table>
                         <tbody>
@@ -51,7 +52,7 @@
                         </tbody>
                     </table>
                 @empty
-                    <p>コメントはまだありません</p>
+                    <p>メモはまだありません</p>
                 @endforelse
             </div>
         </div>
