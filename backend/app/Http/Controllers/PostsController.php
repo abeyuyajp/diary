@@ -120,7 +120,7 @@ class PostsController extends Controller
         $file = $request->file('image');
         if(!empty($file)) {
             $filename = $file->getClientOriginalName();
-            $move = $file->move('../upload', $filename);
+            $move = $file->move('public/image', $filename);
         }else{
             $filename="";
         }
