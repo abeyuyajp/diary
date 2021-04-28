@@ -11,7 +11,7 @@
              <div class="card-body">
                 <h2 class="card-title" style="color:black;">{{ $post->title }}</h2>
                  <p class="card-text"><small class="text-muted">{{ Str::limit( $post->text, 100 ) }}</small></p>
-                 <p class="card-text"><small class="text-muted">{{ $post->created_at->format('Y/m/d') }}</small></p>
+                 <p class="card-text"><small class="text-muted">{{ $post->created_at->diffForHumans() }}</small></p>
              </div>
           </div>
           </a>
