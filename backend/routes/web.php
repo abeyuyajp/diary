@@ -24,7 +24,7 @@ Route::put('posts/{id}', 'PostsController@update');
 Route::delete('posts/{id}', 'PostsController@destroy');
 
 Auth::routes();
+Route::get('/home', 'PostsController@index')->name('home');
 
 Route::resource('comments', 'CommentsController',['only'=>['store']]);
 
-Route::get('/home', 'PostsController@index')->name('home');

@@ -9,6 +9,10 @@ use Auth;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')
+        $posts = Post::where('user_id', Auth::user()->id)
+        ->orderBy('created_at', 'desc')
         ->paginate(12);
         return view('posts.index', compact('posts'));
     }
@@ -81,7 +86,11 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('posts.show', compact('post'));
+        if(Auth::id() === $post->user_id) {
+            return view('posts.show', compact('post'));
+        }else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -90,10 +99,14 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($post_id)
     {
-        $post = Post::find($id);
-        return view('posts.edit', compact('post'));
+        $post = Post::find($post_id);
+        if(Auth::id() === $post->user_id) {
+            return view('posts.edit', compact('post'));
+        }else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -126,7 +139,6 @@ class PostsController extends Controller
             $filename="";
         }
 
-        $post = Post::find($id);
         $posts = Post::where('user_id', Auth::user()->id)->find($request->id);
         $posts->image      =    $filename;
         $posts->title      =    $request->title;
