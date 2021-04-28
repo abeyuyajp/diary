@@ -31,18 +31,22 @@
                 </a>
             </div>
         </nav>
-        <div class="jumbotron text-center" style="background:url(storage/image/header.png); background-size:cover;">
-            <h1 class="display-3 text-left">Welcome!</h1>
-            <h4 class="text-left">E-mail：test@example</br>Password：test0618</h2>
-            <hr class="my-4">
-            <a class="btn btn-club-green btn-lg  m-2" href="{{ route('login') }}" role="button">ログイン</a>
-            <a class="btn btn-club-blue btn-lg  m-2" href="{{ route('register') }}" role="button">新規登録</a>
+        <div class="jumbotron jumbotron-fluid d-flex align-items-end" style="background:url(storage/image/header-2.png); background-size: auto; background-position: center 60%; height: 40vh;" >
+            <div class="container text-center">
+                <a class="btn btn-club-green btn-lg  m-2" href="{{ route('login') }}" role="button">ログイン</a>
+                <a class="btn btn-club-blue btn-lg  m-2" href="{{ route('register') }}" role="button">新規登録</a>
+            </div>
         </div>
         <div class="container">
+            <div class="text-center">
+                <h4>英語日記アプリ</h4>
+                <h5>E-mail：test@example</br>Password：test0618</h5>
+            </div>
+
             <div class="row">
                 <div class="col-sm">
                     <div class="card m-2" style="width: 18rem;">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+                        <img src="storage/image/blog-1.png" class="card-img-top" width="100%">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -51,7 +55,7 @@
                 </div>
                 <div class="col-sm">
                     <div class="card m-2" style="width: 18rem;">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+                        <img src="storage/image/blog-1.png" class="card-img-top" width="100%">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -60,7 +64,7 @@
                 </div>
                 <div class="col-sm">
                     <div class="card m-2" style="width: 18rem;">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+                        <img src="storage/image/blog-1.png" class="card-img-top" width="100%">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
