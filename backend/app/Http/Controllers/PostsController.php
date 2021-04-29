@@ -73,7 +73,7 @@ class PostsController extends Controller
         $posts->title      =    $request->title;
         $posts->text       =    $request->text;
         $posts->save(); 
-        return redirect('/');
+        return redirect('posts');
 
 
     }
@@ -90,7 +90,7 @@ class PostsController extends Controller
         if(Auth::id() === $post->user_id) {
             return view('posts.show', compact('post'));
         }else{
-            return redirect('/');
+            return redirect('posts');
         }
     }
 
@@ -106,7 +106,7 @@ class PostsController extends Controller
         if(Auth::id() === $post->user_id) {
             return view('posts.edit', compact('post'));
         }else{
-            return redirect('/');
+            return redirect('posts');
         }
     }
 
@@ -131,21 +131,6 @@ class PostsController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
-
-        //$file = $request->file('image');
-        //if(!empty($file)) {
-            //$filename = $file->getClientOriginalName();
-            //$move = $file->move('storage/image', $filename);
-        //}else{
-            //$filename="";
-        //}
-
-        //$posts = Post::where('user_id', Auth::user()->id)->find($request->id);
-        //$posts->image      =    $filename;
-        //$posts->title      =    $request->title;
-        //$posts->text       =    $request->text;
-        //$posts->save(); 
-        //return redirect('/');
         
         $posts = Post::where('user_id', Auth::user()->id)->find($request->id);
 
@@ -175,6 +160,6 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('/');
+        return redirect('posts');
     }
 }
