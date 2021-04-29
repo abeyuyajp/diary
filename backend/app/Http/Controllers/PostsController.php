@@ -163,4 +163,15 @@ class PostsController extends Controller
         $post->delete();
         return redirect('posts');
     }
+
+    public function search(Request $request)
+    {
+        $posts = Post::where('user_id', Auth::user()->id);
+
+        $posts = $posts->where('title', 'like', "%{$request->search}%")
+                 ->orWhere('text', 'like', "%{$request->search}%")
+                 ->paginate(10);
+
+        return view('posts.index', compact('posts'));
+    }
 }

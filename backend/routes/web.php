@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+Route::get('/home', 'PostsController@index')->name('home');
+
 Route::get('/posts', 'PostsController@index');
 Route::get('posts/create','PostsController@create');
 Route::post('posts', 'PostsController@store');
@@ -23,8 +26,7 @@ Route::get('posts/{id}/edit', 'PostsController@edit');
 Route::put('posts/{id}', 'PostsController@update');
 Route::delete('posts/{id}', 'PostsController@destroy');
 
-Auth::routes();
-Route::get('/home', 'PostsController@index')->name('home');
+Route::POST('/posts/search', 'PostsController@search')->name('posts.search');
 
 Route::resource('comments', 'CommentsController',['only'=>['store']]);
 

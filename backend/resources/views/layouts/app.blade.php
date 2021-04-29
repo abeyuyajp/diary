@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
     <!-- Styles -->
         <!-- Bootstrap -->
@@ -38,9 +39,15 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <form class="d-flex" action="{{ route('posts.search') }}" method="POST">
+                            @csrf
+                            <input type="text"  class="form-control" placeholder="検索" name="search">
+                            <button class="btn mb-3" type="submit" style="position: relative; right: 41px;">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

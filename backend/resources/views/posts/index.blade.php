@@ -13,7 +13,7 @@
           <a href="{{ url('posts/' . $post->id) }}" style="text-decoration: none;">
           <div class="card d-inline-block m-2" style="width: 18rem;">
             @if(!empty($post->image))
-             <img src="storage/image/{{$post->image}}" class="card-img-top" width="100%">
+             <img src="{{ asset('storage/image/' . $post->image) }}" class="card-img-top" width="100%">
             @endif
              <div class="card-body">
                 <h2 class="card-title" style="color:black;">{{ $post->title }}</h2>
