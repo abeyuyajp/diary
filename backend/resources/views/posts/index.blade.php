@@ -4,10 +4,17 @@
   <div class="row text-center">
     <div class="col-sm">
         <!--投稿一覧-->
+        @if (session('message'))
+          <div class="alert alert-success">
+             {{ session('message') }}
+          </div>
+        @endif
         @foreach($posts as $post)
           <a href="{{ url('posts/' . $post->id) }}" style="text-decoration: none;">
           <div class="card d-inline-block m-2" style="width: 18rem;">
+            @if(!empty($post->image))
              <img src="storage/image/{{$post->image}}" class="card-img-top" width="100%">
+            @endif
              <div class="card-body">
                 <h2 class="card-title" style="color:black;">{{ $post->title }}</h2>
                  <p class="card-text"><small class="text-muted">{{ Str::limit( $post->text, 100 ) }}</small></p>

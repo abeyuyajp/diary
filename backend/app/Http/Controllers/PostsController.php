@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Post;
 use Validator;
 use Auth;
+use Illuminate\Support\Facades\Storage;
+use Session;
 
 class PostsController extends Controller
 {
@@ -72,7 +74,7 @@ class PostsController extends Controller
         $posts->title      =    $request->title;
         $posts->text       =    $request->text;
         $posts->save(); 
-        return redirect('/');
+        return redirect('posts')->with('message', '投稿が完了しました');
 
 
     }
@@ -89,7 +91,7 @@ class PostsController extends Controller
         if(Auth::id() === $post->user_id) {
             return view('posts.show', compact('post'));
         }else{
-            return redirect('/');
+            return redirect('posts');
         }
     }
 
@@ -105,7 +107,7 @@ class PostsController extends Controller
         if(Auth::id() === $post->user_id) {
             return view('posts.edit', compact('post'));
         }else{
-            return redirect('/');
+            return redirect('posts');
         }
     }
 
@@ -116,7 +118,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
         //バリデーション
         $validator = Validator::make($request->all(), [
@@ -130,21 +132,23 @@ class PostsController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
+        
+        $posts = Post::where('user_id', Auth::user()->id)->find($request->id);
 
         $file = $request->file('image');
+
         if(!empty($file)) {
+            Storage::delete('storage/image/'. $post->image);
             $filename = $file->getClientOriginalName();
             $move = $file->move('storage/image', $filename);
-        }else{
-            $filename="";
+            $posts->image = $filename;
+            $posts->save();
         }
 
-        $posts = Post::where('user_id', Auth::user()->id)->find($request->id);
-        $posts->image      =    $filename;
         $posts->title      =    $request->title;
         $posts->text       =    $request->text;
         $posts->save(); 
-        return redirect('/');
+        return redirect('posts');
     }
 
     /**
@@ -157,6 +161,6 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('/');
+        return redirect('posts');
     }
 }

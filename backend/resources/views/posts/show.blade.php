@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card mb-5">
+              @if(!empty($post->image))
                 <img src="{{ asset('storage/image/' . $post->image) }}" class="card-img-top" width="100%" height="40%">
+              @endif
                 <div class="card-body">
                     <h1 class="card-title">{{ $post->title }}</h1>
                     <div class="d-flex justify-content-between">
