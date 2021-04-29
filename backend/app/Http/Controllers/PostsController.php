@@ -7,6 +7,7 @@ use App\Post;
 use Validator;
 use Auth;
 use Illuminate\Support\Facades\Storage;
+use Session;
 
 class PostsController extends Controller
 {
@@ -73,7 +74,7 @@ class PostsController extends Controller
         $posts->title      =    $request->title;
         $posts->text       =    $request->text;
         $posts->save(); 
-        return redirect('posts');
+        return redirect('posts')->with('message', '投稿が完了しました');
 
 
     }
