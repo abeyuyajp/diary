@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Validator;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -116,7 +117,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
         //バリデーション
         $validator = Validator::make($request->all(), [
@@ -131,20 +132,37 @@ class PostsController extends Controller
                 ->withErrors($validator);
         }
 
+        //$file = $request->file('image');
+        //if(!empty($file)) {
+            //$filename = $file->getClientOriginalName();
+            //$move = $file->move('storage/image', $filename);
+        //}else{
+            //$filename="";
+        //}
+
+        //$posts = Post::where('user_id', Auth::user()->id)->find($request->id);
+        //$posts->image      =    $filename;
+        //$posts->title      =    $request->title;
+        //$posts->text       =    $request->text;
+        //$posts->save(); 
+        //return redirect('/');
+        
+        $posts = Post::where('user_id', Auth::user()->id)->find($request->id);
+
         $file = $request->file('image');
+
         if(!empty($file)) {
+            Storage::delete('storage/image/'. $post->image);
             $filename = $file->getClientOriginalName();
             $move = $file->move('storage/image', $filename);
-        }else{
-            $filename="";
+            $posts->image = $filename;
+            $posts->save();
         }
 
-        $posts = Post::where('user_id', Auth::user()->id)->find($request->id);
-        $posts->image      =    $filename;
         $posts->title      =    $request->title;
         $posts->text       =    $request->text;
         $posts->save(); 
-        return redirect('/');
+        return redirect('posts');
     }
 
     /**
