@@ -32,12 +32,12 @@
             <div class="p-3">
                 <!-- コメントフォーム -->
                 @if(Auth::check())
-                    <form method="POST" action="/comments" style="margin-bottom: 15vh;">
+                    <form method="POST" action="/comments" style="margin-bottom: 8vh;">
                         @csrf 
                         <input type="hidden" name="post_id" value="{{ $post->id }}">
                         <input type="hidden" name="user_id" value="{{ $post->user->id }}">
                         <div class="form-group d-flex" >
-                            <textarea class="form-control" name="text" placeholder="日記にメモを残しましょう"></textarea>
+                            <textarea class="form-control" name="text" placeholder="分からなかった単語や文法はメモしておきましょう"></textarea>
                             <input class="btn btn-club-green" type="submit" value="GO">
                         </div>
                     </form>
