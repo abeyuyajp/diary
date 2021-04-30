@@ -24,7 +24,8 @@ class PostsController extends Controller
     {
         $posts = Post::where('user_id', Auth::user()->id)
         ->orderBy('created_at', 'desc')
-        ->paginate(12);
+        ->paginate(10);
+        
         return view('posts.index', compact('posts'));
     }
 
@@ -74,7 +75,7 @@ class PostsController extends Controller
         $posts->title      =    $request->title;
         $posts->text       =    $request->text;
         $posts->save(); 
-        return redirect('posts')->with('message', '投稿が完了しました');
+        return redirect('home')->with('message', '投稿が完了しました');
 
 
     }
@@ -85,14 +86,16 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
         $post = Post::find($id);
         if(Auth::id() === $post->user_id) {
             return view('posts.show', compact('post'));
         }else{
-            return redirect('posts');
+            return redirect('home');
         }
+        return view('posts.show', compact('post'));
+        
     }
 
     /**
@@ -103,11 +106,13 @@ class PostsController extends Controller
      */
     public function edit($post_id)
     {
-        $post = Post::find($post_id);
+        $posts = Post::where('user_id', Auth::user()->id)->find($post_id);
+        return view('posts.edit', ['post' => $posts]);
+
         if(Auth::id() === $post->user_id) {
             return view('posts.edit', compact('post'));
         }else{
-            return redirect('posts');
+            return redirect('home');
         }
     }
 
@@ -119,7 +124,7 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Post $post)
-    {
+    {   
         //バリデーション
         $validator = Validator::make($request->all(), [
             'title'=>'required',
@@ -132,13 +137,13 @@ class PostsController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
-        
+
         $posts = Post::where('user_id', Auth::user()->id)->find($request->id);
 
         $file = $request->file('image');
 
         if(!empty($file)) {
-            Storage::delete('storage/image/'. $post->image);
+            //Storage::delete('storage/image/'. $post->image);
             $filename = $file->getClientOriginalName();
             $move = $file->move('storage/image', $filename);
             $posts->image = $filename;
@@ -148,7 +153,7 @@ class PostsController extends Controller
         $posts->title      =    $request->title;
         $posts->text       =    $request->text;
         $posts->save(); 
-        return redirect('posts');
+        return redirect('home');
     }
 
     /**
@@ -161,6 +166,24 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('posts');
+        return redirect('home');
+    }
+
+    public function search(Request $request)
+    {
+        //$auth = Auth::user()->id;
+        //$posts = Post::where('user_id', $auth);
+        
+        $posts = Post::where('user_id', Auth::user()->id)
+                       ->where('title', 'like', "%{$request->search}%")
+                       ->paginate(3);
+
+        $search_result = $request->search. 'の検索結果：'.$posts->total().'件';
+
+        return view('posts.index', [
+            'posts'=>$posts,
+            'search_result' => $search_result,
+            'search_query'  => $request->search,
+        ]);
     }
 }

@@ -28,6 +28,8 @@
                     </div>
                     
                     <button class="btn btn-club-green d-block" type="submit" style="margin: 0 auto;">更新</button>
+                    
+                    <input type="hidden" name="id" value="{{$post->id}}">
                 </form>
             </div>
                 

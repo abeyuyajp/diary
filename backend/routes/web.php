@@ -15,16 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts', 'PostsController@index');
-Route::get('posts/create','PostsController@create');
-Route::post('posts', 'PostsController@store');
-Route::get('posts/{id}', 'PostsController@show');
-Route::get('posts/{id}/edit', 'PostsController@edit');
-Route::put('posts/{id}', 'PostsController@update');
-Route::delete('posts/{id}', 'PostsController@destroy');
-
 Auth::routes();
+
 Route::get('/home', 'PostsController@index')->name('home');
+Route::resource('/posts', 'PostsController',['except' => ['index']]);
+Route::get('/search', 'PostsController@search')->name('posts.search');
 
 Route::resource('comments', 'CommentsController',['only'=>['store']]);
 
