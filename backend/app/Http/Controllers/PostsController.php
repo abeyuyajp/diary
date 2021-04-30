@@ -25,6 +25,7 @@ class PostsController extends Controller
         $posts = Post::where('user_id', Auth::user()->id)
         ->orderBy('created_at', 'desc')
         ->paginate(10);
+        
         return view('posts.index', compact('posts'));
     }
 
@@ -88,11 +89,11 @@ class PostsController extends Controller
     public function show(Request $request,$id)
     {
         $post = Post::find($id);
-        //if(Auth::id() === $post->user_id) {
-            //return view('posts.show', compact('post'));
-        //}else{
-            //return redirect('home');
-        //}
+        if(Auth::id() === $post->user_id) {
+            return view('posts.show', compact('post'));
+        }else{
+            return redirect('home');
+        }
         return view('posts.show', compact('post'));
         
     }
@@ -108,11 +109,11 @@ class PostsController extends Controller
         $posts = Post::where('user_id', Auth::user()->id)->find($post_id);
         return view('posts.edit', ['post' => $posts]);
 
-        //if(Auth::id() === $post->user_id) {
-            //return view('posts.edit', compact('post'));
-       // }else{
-           // return redirect('home');
-       // }
+        if(Auth::id() === $post->user_id) {
+            return view('posts.edit', compact('post'));
+        }else{
+            return redirect('home');
+        }
     }
 
     /**
@@ -170,10 +171,13 @@ class PostsController extends Controller
 
     public function search(Request $request)
     {
-        $posts = Post::where('title', 'like', "%{$request->search}%")
-                 ->orWhere('text', 'like', "%{$request->search}%")
-                 ->paginate(3);
-                 
+        //$auth = Auth::user()->id;
+        //$posts = Post::where('user_id', $auth);
+        
+        $posts = Post::where('user_id', Auth::user()->id)
+                       ->where('title', 'like', "%{$request->search}%")
+                       ->paginate(3);
+
         $search_result = $request->search. 'の検索結果：'.$posts->total().'件';
 
         return view('posts.index', [
