@@ -3,6 +3,10 @@
 <div class="container">
   <div class="row text-center">
     <div class="col-sm">
+        <!--検索結果-->
+        @isset($search_result)
+          <h2>{{ $search_result }}</h2>
+        @endisset
         <!--投稿一覧-->
         @if (session('message'))
           <div class="alert alert-success">
@@ -28,7 +32,8 @@
   <!--ページネーション-->
   <div class="row justify-content-center">
      <div class="col-md-4">
-        {{ $posts->links() }}
+     {{ $posts->appends(request()->input())->links() }}
+     
      </div>
   </div>
 </div>

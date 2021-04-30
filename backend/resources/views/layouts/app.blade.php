@@ -41,7 +41,8 @@
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <form class="d-flex" action="{{ route('posts.search') }}" method="POST">
+                        <form class="d-flex" action="{{route('posts.search')}}" method="get">
+                            
                             @csrf
                             <input type="text"  class="form-control" placeholder="検索" name="search">
                             <button class="btn mb-3" type="submit" style="position: relative; right: 41px;">
