@@ -176,6 +176,7 @@ class PostsController extends Controller
         
         $posts = Post::where('user_id', Auth::user()->id)
                        ->where('title', 'like', "%{$request->search}%")
+                       ->orderBy('created_at', 'desc')
                        ->paginate(10);
 
         $search_result = $request->search. 'の検索結果：'.$posts->total().'件';
