@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <h1 class="card-title">{{ $post->title }}</h1>
                     <div class="d-flex justify-content-between">
-                          <p class="card-text"><small class="text-muted">{{ $post->created_at->format('Y/m/d') }}</small></p>
+                          <p class="card-text"><small class="text-muted">{{ $post->created_at->format('Y/m/d H:i') }}</small></p>
                           <ul class="navbar-nav">
                               <li class="nav-item dropdown" style="list-style: none;">
                                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
