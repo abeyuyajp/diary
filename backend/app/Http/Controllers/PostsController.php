@@ -75,7 +75,7 @@ class PostsController extends Controller
         $posts->title      =    $request->title;
         $posts->text       =    $request->text;
         $posts->save(); 
-        return redirect('home')->with('message', '投稿が完了しました');
+        return redirect('/')->with('message', '投稿が完了しました');
 
 
     }
@@ -92,7 +92,7 @@ class PostsController extends Controller
         if(Auth::id() === $post->user_id) {
             return view('posts.show', compact('post'));
         }else{
-            return redirect('home');
+            return redirect('/');
         }
         return view('posts.show', compact('post'));
         
@@ -112,7 +112,7 @@ class PostsController extends Controller
         if(Auth::id() === $post->user_id) {
             return view('posts.edit', compact('post'));
         }else{
-            return redirect('home');
+            return redirect('/');
         }
     }
 
@@ -153,7 +153,7 @@ class PostsController extends Controller
         $posts->title      =    $request->title;
         $posts->text       =    $request->text;
         $posts->save(); 
-        return redirect('home');
+        return redirect('/');
     }
 
     /**
@@ -166,7 +166,7 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('home');
+        return redirect('/');
     }
 
     public function search(Request $request)
