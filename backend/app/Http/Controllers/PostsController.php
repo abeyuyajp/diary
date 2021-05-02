@@ -171,9 +171,6 @@ class PostsController extends Controller
 
     public function search(Request $request)
     {
-        //$auth = Auth::user()->id;
-        //$posts = Post::where('user_id', $auth);
-        
         $posts = Post::where('user_id', Auth::user()->id)
                        ->where('title', 'like', "%{$request->search}%")
                        ->orderBy('created_at', 'desc')
