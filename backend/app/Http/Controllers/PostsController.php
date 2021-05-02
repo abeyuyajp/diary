@@ -143,7 +143,6 @@ class PostsController extends Controller
         $file = $request->file('image');
 
         if(!empty($file)) {
-            //Storage::delete('storage/image/'. $post->image);
             $filename = $file->getClientOriginalName();
             $move = $file->move('storage/image', $filename);
             $posts->image = $filename;
@@ -153,7 +152,7 @@ class PostsController extends Controller
         $posts->title      =    $request->title;
         $posts->text       =    $request->text;
         $posts->save(); 
-        return redirect('/');
+        return redirect('/')->with('message', '投稿を編集しました');
     }
 
     /**
@@ -166,7 +165,7 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('/');
+        return redirect('/')->with('message', '投稿を削除しました');
     }
 
     public function search(Request $request)
