@@ -15,14 +15,13 @@
                           <ul class="navbar-nav">
                               <li class="nav-item dropdown" style="list-style: none;">
                                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  more
                                   </a>
                                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                      <a class="dropdown-item" href="{{ url('posts/' . $post->id . '/edit') }}">Edit</a>
+                                      <a class="dropdown-item" href="{{ url('posts/' . $post->id . '/edit') }}">編集する</a>
                                       <form method="POST" action="/posts/{{ $post->id }}">
                                           @csrf 
                                           @method('DELETE')
-                                          <button class="dropdown-item" type="submit">Delete</button>
+                                          <button class="dropdown-item" type="submit">削除する</button>
                                       </form>
                                   </div>
                               </li>
@@ -40,7 +39,7 @@
                         <input type="hidden" name="user_id" value="{{ $post->user->id }}">
                         <div class="form-group d-flex" >
                             <textarea class="form-control" name="text" placeholder="分からなかった単語や文法はメモしておきましょう"></textarea>
-                            <input class="btn btn-club-green" type="submit" value="GO">
+                            <input class="btn btn-club-green" type="submit" value="メモを追加">
                         </div>
                     </form>
                 @endif
