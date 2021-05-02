@@ -30,10 +30,9 @@
     </div>
   </div>
   <!--ページネーション-->
-  <div class="row justify-content-center">
+  <div class="mx-auto mt-5" style="width: 150px;">
      <div class="col-md-4">
      {{ $posts->appends(request()->input())->links() }}
-     
      </div>
   </div>
 </div>
