@@ -9,7 +9,7 @@
         @endisset
         <!--投稿一覧-->
         @if (session('message'))
-          <div class="alert alert-success">
+          <div class="alert alert-success" style="color: white; background-color: #27AE60; border-color: #27AE60;">
              {{ session('message') }}
           </div>
         @endif
