@@ -14,16 +14,19 @@
                     @csrf
                     @method('PUT')
                     <div class="col-sm-6">
-                        <input type="file" name="image" value="{{ asset('storage/image/' . $post->image) }}">
+                        <label>
+                        画像を選択
+                            <input type="file" name="image" value="{{ asset('storage/image/' . $post->image) }}">
+                        </label>
                     </div>
 
-                    <div class="form-group">
-                        <label for="title" class="control-label">Title</label>
+                    <div class="form-group mt-4">
+                        <label for="title" class="control-label">タイトル</label>
                         <input class="form-control" name="title" type="text" value="{{ $post->title }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="text" class="control-label">Text</label>
+                        <label for="text" class="control-label">テキスト</label>
                         <textarea class="form-control" name="text" style="padding-bottom: 50vh;">{{$post->text}}</textarea>
                     </div>
                     

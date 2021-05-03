@@ -14,21 +14,24 @@
                 <form enctype="multipart/form-data" method="POST" action="/posts">
                     @csrf
                     <div class="col-sm-6">
-                        <input type="file" name="image">
+                        <label>
+                        画像を選択
+                            <input type="file" name="image">
+                        </label>
                     </div>
 
-                    <div class="form-group">
-                        <label for="title" class="control-label">Title</label>
+                    <div class="form-group mt-4">
+                        <label for="title" class="control-label">タイトル</label>
                         <input class="form-control" name="title" type="text">
                     </div>
 
                     <div class="form-group">
-                        <label for="text" class="control-label">Text</label>
+                        <label for="text" class="control-label">テキスト</label>
                         <textarea class="form-control" name="text" style="padding-bottom: 50vh;"></textarea>
                     </div>
 
 
-                    <button class="btn btn-club-green d-block" type="submit" style="margin: 0 auto;">GO</button>
+                    <button class="btn btn-club-green d-block" type="submit" style="margin: 0 auto;">投稿</button>
                 </form>
             </div>
                 

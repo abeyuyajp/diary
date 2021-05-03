@@ -9,7 +9,7 @@
         @endisset
         <!--投稿一覧-->
         @if (session('message'))
-          <div class="alert alert-success">
+          <div class="alert alert-success" style="color: white; background-color: #27AE60; border-color: #27AE60;">
              {{ session('message') }}
           </div>
         @endif
@@ -30,10 +30,9 @@
     </div>
   </div>
   <!--ページネーション-->
-  <div class="row justify-content-center">
+  <div class="mx-auto mt-5" style="width: 150px;">
      <div class="col-md-4">
      {{ $posts->appends(request()->input())->links() }}
-     
      </div>
   </div>
 </div>

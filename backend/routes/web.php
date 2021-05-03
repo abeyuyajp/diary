@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('home', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'PostsController@index')->name('home');
+Route::get('/', 'PostsController@index');
 Route::resource('/posts', 'PostsController',['except' => ['index']]);
 Route::get('/search', 'PostsController@search')->name('posts.search');
 

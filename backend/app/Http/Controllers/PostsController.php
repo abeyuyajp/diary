@@ -75,7 +75,7 @@ class PostsController extends Controller
         $posts->title      =    $request->title;
         $posts->text       =    $request->text;
         $posts->save(); 
-        return redirect('home')->with('message', '投稿が完了しました');
+        return redirect('/')->with('message', '投稿が完了しました');
 
 
     }
@@ -92,7 +92,7 @@ class PostsController extends Controller
         if(Auth::id() === $post->user_id) {
             return view('posts.show', compact('post'));
         }else{
-            return redirect('home');
+            return redirect('/');
         }
         return view('posts.show', compact('post'));
         
@@ -112,7 +112,7 @@ class PostsController extends Controller
         if(Auth::id() === $post->user_id) {
             return view('posts.edit', compact('post'));
         }else{
-            return redirect('home');
+            return redirect('/');
         }
     }
 
@@ -143,7 +143,6 @@ class PostsController extends Controller
         $file = $request->file('image');
 
         if(!empty($file)) {
-            //Storage::delete('storage/image/'. $post->image);
             $filename = $file->getClientOriginalName();
             $move = $file->move('storage/image', $filename);
             $posts->image = $filename;
@@ -153,7 +152,7 @@ class PostsController extends Controller
         $posts->title      =    $request->title;
         $posts->text       =    $request->text;
         $posts->save(); 
-        return redirect('home');
+        return redirect('/')->with('message', '投稿を編集しました');
     }
 
     /**
@@ -166,17 +165,15 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('home');
+        return redirect('/')->with('message', '投稿を削除しました');
     }
 
     public function search(Request $request)
     {
-        //$auth = Auth::user()->id;
-        //$posts = Post::where('user_id', $auth);
-        
         $posts = Post::where('user_id', Auth::user()->id)
                        ->where('title', 'like', "%{$request->search}%")
-                       ->paginate(3);
+                       ->orderBy('created_at', 'desc')
+                       ->paginate(10);
 
         $search_result = $request->search. 'の検索結果：'.$posts->total().'件';
 
