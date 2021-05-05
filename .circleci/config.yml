@@ -33,6 +33,7 @@ jobs:
       - restore_cache:
           key: npm-v1-{{ checksum "./backend/package-lock.json" }}
       - run:
+          working_directory: backend
           name: npm ci
           command: |
             if [ ! -d node_modules ]; then
@@ -42,7 +43,10 @@ jobs:
           key: npm-v1-{{ checksum "./backend/package-lock.json" }}
           paths:
             - node_modules
-      - run: npm run dev
       - run:
+          working_directory: backend
+          command: npm run dev
+      - run:
+          working_directory: backend
           name: php test
           command: vendor/bin/phpunit
