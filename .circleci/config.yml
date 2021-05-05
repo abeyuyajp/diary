@@ -22,14 +22,14 @@ jobs:
       - checkout
       - run: sudo composer self-update
       - restore_cache:
-          key: composer-v1-{{ checksum "/backend/composer.lock" }}
+          key: composer-v1-{{ checksum "./backend/composer.lock" }}
       - run: composer install -n --prefer-dist
       - save_cache:
-          key: composer-v1-{{ checksum "/backend/composer.lock" }}
+          key: composer-v1-{{ checksum "./backend/composer.lock" }}
           paths:
             - vendor
       - restore_cache:
-          key: npm-v1-{{ checksum "/backend/package-lock.json" }}
+          key: npm-v1-{{ checksum "./backend/package-lock.json" }}
       - run:
           name: npm ci
           command: |
@@ -37,7 +37,7 @@ jobs:
               npm ci
             fi 
       - save_cache:
-          key: npm-v1-{{ checksum "/backend/package-lock.json" }}
+          key: npm-v1-{{ checksum "./backend/package-lock.json" }}
           paths:
             - node_modules
       - run: npm run dev
