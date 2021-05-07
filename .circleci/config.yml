@@ -62,10 +62,10 @@ jobs:
             ssh -o StrictHostKeyChecking=no -t webapp@${HOST_NAME} "cd diary && \
               git pull origin main"
       - run:
+          working_directory: backend
           name: deploy2
           command: |
-              "cd backend && \
-              composer install -n --no-dev --prefer-dist && \
+              "composer install -n --no-dev --prefer-dist && \
               npm ci && \
               npm run prod && \
               php artisan migrate --force && \
