@@ -63,13 +63,24 @@ jobs:
               git pull origin main"
       - run:
           working_directory: backend
-          name: deploy2
+          command: composer install -n --no-dev --prefer-dist
+      - run:
+          working_directory: backend
+          name: npm ci
           command: |
-              "composer install -n --no-dev --prefer-dist && \
-              npm ci && \
-              npm run prod && \
-              php artisan migrate --force && \
-              php artisan config:cache"
+            if [ ! -d node_modules ]; then
+              npm ci
+            fi 
+      - run:
+          working_directory: backend
+          command: npm run prod
+      - run:
+          working_directory: backend
+          command: php artisan migrate --force
+      - run:
+          working_directory: backend
+          command: php artisan config:cache
+
 
 workflows:
   version: 2
