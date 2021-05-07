@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-cream shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="/storage/image/j-logo.png"  style="width: 100px;">
+                <img src="storage/image/j-logo.png"  style="width: 100px;">
                 </a>
             </div>
         </nav>
