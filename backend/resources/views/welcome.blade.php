@@ -39,7 +39,7 @@
         </div>
         <div class="container marketing">
             <div class="text-center">
-                <h5>E-mail：test@example</br>Password：test0618</h5>
+                <h5>メール：test@example</br>パスワード：test0618</h5>
             </div>
 
             <div class="row mt-5">
