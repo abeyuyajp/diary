@@ -26,8 +26,19 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="text" class="control-label">日本語を入力してください</label>
+                        <textarea class="form-control" name="before_translate" style="padding-bottom: 10vh;"></textarea>
+                        <input type="button" class="btn btn-club-blue d-block" value="翻訳" style="position: relative;top: -38px; right: -352px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="text" class="control-label">翻訳</label>
+                        <textarea class="form-control" name="translate" style="padding-bottom: 10vh;"></textarea>
+                    </div>
+
+                    <div class="form-group">
                         <label for="text" class="control-label">テキスト</label>
-                        <textarea class="form-control" name="text" style="padding-bottom: 50vh;"></textarea>
+                        <textarea class="form-control" name="text" style="padding-bottom: 20vh;"></textarea>
                     </div>
 
 
