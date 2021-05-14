@@ -8,6 +8,10 @@ use Validator;
 use Auth;
 use Illuminate\Support\Facades\Storage;
 use Session;
+use Google\Cloud\Translate\V2\TranslateClient;
+
+
+
 
 class PostsController extends Controller
 {
@@ -34,9 +38,26 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+
+        #$translate = new TranslateClient();
+        #$lang = "en";
+        #$result = $translate->translate("こんにちは", [
+            #'target' => $lang,
+        #]);
         return view('posts.create');
+    }
+
+    public function translate(Request $request)
+    {
+        $translate = new TranslateClient();
+        $lang = "en";
+        $result = $translate->translate($request->before_translate, [
+            'target' => $lang,
+        ]);
+        $translating = $result['text'];
+        return view('posts.create', [ 'translating'=>$translating,]);
     }
 
     /**
