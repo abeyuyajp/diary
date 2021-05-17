@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Post;
 use Validator;
 use Auth;
 use Illuminate\Support\Facades\Storage;
 use Session;
+use Google\Cloud\Translate\V2\TranslateClient;
+
+
+
 
 class PostsController extends Controller
 {
@@ -34,9 +39,20 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         return view('posts.create');
+    }
+
+    public function translate(Request $request)
+    {
+        $translate = new TranslateClient();
+        $lang = "en";
+        $result = $translate->translate($request->before_translate, [
+            'target' => $lang,
+        ]);
+        $translation = $result['text'];
+        return view('posts.create', compact('translation'));
     }
 
     /**
@@ -76,8 +92,6 @@ class PostsController extends Controller
         $posts->text       =    $request->text;
         $posts->save(); 
         return redirect('/')->with('message', '投稿が完了しました');
-
-
     }
 
     /**
@@ -95,7 +109,6 @@ class PostsController extends Controller
             return redirect('/');
         }
         return view('posts.show', compact('post'));
-        
     }
 
     /**
