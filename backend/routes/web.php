@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/', 'PostsController@index');
 Route::resource('/posts', 'PostsController',['except' => ['index']]);
 Route::get('/search', 'PostsController@search')->name('posts.search');
-Route::post('translate', 'PostsController@translate')->name('posts.translate');
+Route::get('translate', 'PostsController@translate')->name('posts.translate');
 
 Route::resource('comments', 'CommentsController',['only'=>['store']]);
 
