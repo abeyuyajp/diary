@@ -35,7 +35,7 @@
             </div>
             <div class="card mt-5">
                 <div class="card-body">
-                    <form action="{{route('posts.translate')}}" method="get" id="translate-form">
+                    <form action="{{route('posts.translate')}}" method="post" id="translate-form">
                         @csrf
                         <div class="form-group">
                             <label for="text" class="control-label">Japanese</label>
