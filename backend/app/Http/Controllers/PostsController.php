@@ -16,9 +16,11 @@ use Google\Cloud\Translate\V2\TranslateClient;
 
 class PostsController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
+        $this->api_key = env("GOOGLE_TRANSLATION_API_KEY");
     }
     /**
      * Display a listing of the resource.
@@ -45,8 +47,8 @@ class PostsController extends Controller
     }
 
     public function translate(Request $request)
-    {
-        $translate = new TranslateClient();
+    {   
+        $translate = new TranslateClient(['key' => $this->api_key]);
         $lang = "en";
         $result = $translate->translate($request->before_translate, [
             'target' => $lang,
