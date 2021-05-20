@@ -33,6 +33,7 @@ return [
     'google-translate' => [
          'key'     => env('GOOGLE_APPLICATION_CREDENTIALS'),
          'api_key' => env('GOOGLE_TRANSLATION_API_KEY'),
+         'youtube_key' => env('GOOGLE_YOUTUBE_API_KEY'),
     ],
     
 
