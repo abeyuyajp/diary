@@ -61,7 +61,6 @@ jobs:
           name: deploy
           command: |
             ssh -o StrictHostKeyChecking=no -t webapp@${HOST_NAME} "cd diary && \
-              git reset HEAD --hard && \
               git pull origin main"
       - run:
           working_directory: backend
