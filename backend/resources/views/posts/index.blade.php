@@ -3,6 +3,17 @@
 <div class="container">
   <div class="row text-center">
     <div class="col-sm">
+        <!--youtube(検索結果の表示時には表示しない)-->
+        @if (!isset($search_result))
+          <h1> Journaly TV </h1>
+          <div class="movieBox">
+              <div class="thums">
+                <iframe class="video" src="https://www.youtube.com/embed/{{ $video_id }} " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="height: 40vh; width: 80%;"></iframe>
+              </div>
+          </div>
+        @endif
+        <!--youtube(検索結果の表示時には表示しない)-->
+
         <!--検索結果-->
         @isset($search_result)
           <h2>{{ $search_result }}</h2>
