@@ -10,7 +10,7 @@ use Auth;
 use Illuminate\Support\Facades\Storage;
 use Session;
 use Google\Cloud\Translate\V2\TranslateClient;
-
+use App\Http\Vender\CallYoutubeApi;
 
 
 
@@ -32,8 +32,12 @@ class PostsController extends Controller
         $posts = Post::where('user_id', Auth::user()->id)
         ->orderBy('created_at', 'desc')
         ->paginate(10);
+
+       $t = new CallYoutubeApi();
+       $video = $t->searchVideos();
+       $video_id = $video['id']['videoId'];
         
-        return view('posts.index', compact('posts'));
+       return view('posts.index', compact('posts', 'video_id'));
     }
 
     /**
