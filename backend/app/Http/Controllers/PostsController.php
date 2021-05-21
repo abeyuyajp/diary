@@ -71,8 +71,8 @@ class PostsController extends Controller
     {
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'title' => 'required',
-            "text"  => 'required',
+            'title' => ['required','regex:/^[a-zA-Z0-9]+$/'],
+            'text'  => ['required', 'regex:/^[a-zA-Z0-9]+$/'],
         ]);
 
         //バリデーションエラー
@@ -146,8 +146,8 @@ class PostsController extends Controller
     {   
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'title'=>'required',
-            'text' =>'required',
+            'title' => ['required','regex:/^[a-zA-Z0-9]+$/'],
+            'text'  => ['required', 'regex:/^[a-zA-Z0-9]+$/'],
         ]);
 
         //バリデーションエラー
