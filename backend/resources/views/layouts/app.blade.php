@@ -43,7 +43,7 @@
                     <ul class="navbar-nav ml-auto">
                         <form class="d-flex" action="{{route('posts.search')}}" method="get">
                             @csrf
-                            <input type="text"  class="form-control" placeholder="検索" name="search">
+                            <input type="text"  class="form-control" placeholder="検索" name="search" style="border-radius: 20px;">
                             <button class="btn mb-3" type="submit" style="position: relative; right: 41px;">
                                 <i class="fas fa-search"></i>
                             </button>
@@ -64,7 +64,7 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="border-radius: 20px;">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
