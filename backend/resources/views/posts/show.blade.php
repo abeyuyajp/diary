@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card mb-5">
+            <div class="card mb-5" style="border-radius: 20px;">
               @if(!empty($post->image))
-                <img src="{{ asset('storage/image/' . $post->image) }}" class="card-img-top" width="100%" height="40%">
+                <img src="{{ asset('storage/image/' . $post->image) }}" class="card-img-top" width="100%" height="40%" style="border-radius: 20px 20px 0 0;">
               @endif
                 <div class="card-body">
                     <h1 class="card-title">{{ $post->title }}</h1>
@@ -16,7 +16,7 @@
                               <li class="nav-item dropdown" style="list-style: none;">
                                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   </a>
-                                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="border-radius: 20px;">
                                       <a class="dropdown-item" href="{{ url('posts/' . $post->id . '/edit') }}">編集する</a>
                                       <form method="POST" action="/posts/{{ $post->id }}">
                                           @csrf 
@@ -38,8 +38,8 @@
                         <input type="hidden" name="post_id" value="{{ $post->id }}">
                         <input type="hidden" name="user_id" value="{{ $post->user->id }}">
                         <div class="form-group d-flex" >
-                            <textarea class="form-control" name="text" placeholder="分からなかった単語や文法はメモしておきましょう"></textarea>
-                            <input class="btn btn-club-green" type="submit" value="メモを追加">
+                            <textarea class="form-control" name="text" placeholder="分からなかった単語や文法はメモしておきましょう" style="border-radius: 20px;"></textarea>
+                            <input class="btn btn-club-green" type="submit" value="メモを追加" style="border-radius: 20px;">
                         </div>
                     </form>
                 @endif
