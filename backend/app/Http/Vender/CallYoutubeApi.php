@@ -21,7 +21,7 @@ class CallYoutubeApi
         $youtube = new Google_Service_YouTube($this->client);
         $params['channelId'] = 'UCVrvnobbNGGMsS5n2mJwfOg';
         $params['type'] = 'video';
-        $params['maxResults'] = 10;
+        $params['maxResults'] = 50;
 
         $r = $youtube->search->listSearch('snippet', $params);
         $videos = $r['items'];
