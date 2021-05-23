@@ -43,7 +43,7 @@
                     <ul class="navbar-nav ml-auto">
                         <form class="d-flex" action="{{route('posts.search')}}" method="get">
                             @csrf
-                            <input type="text"  class="form-control" placeholder="検索" name="search">
+                            <input type="text"  class="form-control" placeholder="検索" name="search" style="border-radius: 20px;">
                             <button class="btn mb-3" type="submit" style="position: relative; right: 41px;">
                                 <i class="fas fa-search"></i>
                             </button>
