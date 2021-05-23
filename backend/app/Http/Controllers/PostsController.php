@@ -48,17 +48,25 @@ class PostsController extends Controller
     public function create(Request $request)
     {
         return view('posts.create');
+        
     }
 
     public function translate(Request $request)
     {   
-        $translate = new TranslateClient(['key' => $this->api_key]);
-        $lang = "en";
-        $result = $translate->translate($request->before_translate, [
-            'target' => $lang,
-        ]);
-        $translation = $result['text'];
-        return view('posts.create', compact('translation'));
+        if(!empty($request->before_translate)) {
+            $translate = new TranslateClient(['key' => $this->api_key]);
+            $lang = "en";
+            $result = $translate->translate($request->before_translate, [
+                'target' => $lang,
+            ]);
+            $translation = $result['text'];
+            #return redirect()->back()
+                #->withInput()
+                #->with('translation', $translation);
+            return view('posts.create', compact('translation'));
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -89,6 +97,9 @@ class PostsController extends Controller
         }else{
             $filename="";
         }
+
+
+
 
 
         $posts = new Post;
@@ -125,8 +136,8 @@ class PostsController extends Controller
      */
     public function edit($post_id)
     {
-        $posts = Post::where('user_id', Auth::user()->id)->find($post_id);
-        return view('posts.edit', ['post' => $posts]);
+        $post = Post::where('user_id', Auth::user()->id)->find($post_id);
+        return view('posts.edit', ['post' => $post]);
 
         if(Auth::id() === $post->user_id) {
             return view('posts.edit', compact('post'));
