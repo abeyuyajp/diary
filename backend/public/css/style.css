@@ -24,6 +24,9 @@
   border-color: #5476AA;
 }
 
+.radius-2 {
+  border-radius: 20px;
+}
 
 #form2{
   position:relative;
