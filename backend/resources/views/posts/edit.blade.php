@@ -6,7 +6,6 @@
         <div class="col-md-8">
             <div class="card" style="border-radius: 20px;">
                 
-                
                 @include('common.errors')
                 
                 <div class="card-body">
@@ -22,12 +21,12 @@
 
                         <div class="form-group mt-4">
                             <label for="title" class="control-label">タイトル</label>
-                            <input class="form-control" name="title" type="text" value="{{ $post->title }}" style="border-radius: 20px;">
+                            <input class="form-control" name="title" type="text" value="{{ old('title', $post->title) }}" style="border-radius: 20px;">
                         </div>
 
                         <div class="form-group">
                             <label for="text" class="control-label">テキスト</label>
-                            <textarea class="form-control" name="text" style="padding-bottom: 20vh; border-radius: 20px;">{{$post->text}}</textarea>
+                            <textarea class="form-control" name="text" style="padding-bottom: 20vh; border-radius: 20px;">{{ old('text', $post->text) }}</textarea>
                         </div>
                         <button class="btn btn-club-green d-block" type="submit" style="margin: 0 auto;">更新</button>
                         <input type="hidden" name="id" value="{{$post->id}}">
@@ -35,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <!--div class="col-md-4">
             <div class="sidebar_content">
                 <div class="card mt-5" style="border-radius: 20px;">
                     <div class="card-body">
@@ -64,7 +63,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div-->
     </div>
 </div>
 @endsection

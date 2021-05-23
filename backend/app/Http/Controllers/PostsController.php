@@ -60,6 +60,9 @@ class PostsController extends Controller
                 'target' => $lang,
             ]);
             $translation = $result['text'];
+            #return redirect()->back()
+                #->withInput()
+                #->with('translation', $translation);
             return view('posts.create', compact('translation'));
         } else {
             return redirect()->back();
@@ -96,6 +99,9 @@ class PostsController extends Controller
         }
 
 
+
+
+
         $posts = new Post;
         $posts->user_id    =    Auth::user()->id;
         $posts->image      =    $filename;
@@ -130,8 +136,8 @@ class PostsController extends Controller
      */
     public function edit($post_id)
     {
-        $posts = Post::where('user_id', Auth::user()->id)->find($post_id);
-        return view('posts.edit', ['post' => $posts]);
+        $post = Post::where('user_id', Auth::user()->id)->find($post_id);
+        return view('posts.edit', ['post' => $post]);
 
         if(Auth::id() === $post->user_id) {
             return view('posts.edit', compact('post'));
