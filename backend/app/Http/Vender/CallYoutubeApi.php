@@ -19,11 +19,11 @@ class CallYoutubeApi
     public function searchVideos()
     {
         $youtube = new Google_Service_YouTube($this->client);
-        $params['channelId'] = 'UCVrvnobbNGGMsS5n2mJwfOg';
-        $params['type'] = 'video';
-        $params['maxResults'] = 50;
-
-        $r = $youtube->search->listSearch('snippet', $params);
+        $r = $youtube->playlistItems->listPlaylistItems('snippet', array(
+            "playlistId" => 'PLErc3Oi7icuFSTHt-RtlqW0cC1l5dle1v',
+            "maxResults" => 50
+        ));
+        
         $videos = $r['items'];
         $video = $videos[array_rand($videos)];
         return $video;

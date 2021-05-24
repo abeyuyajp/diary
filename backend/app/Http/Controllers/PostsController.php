@@ -35,7 +35,8 @@ class PostsController extends Controller
 
        $t = new CallYoutubeApi();
        $video = $t->searchVideos();
-       $video_id = $video['id']['videoId'];
+       #$video_id = $video['id']['videoId'];
+       $video_id = $video['snippet']['resourceId']['videoId'];
         
        return view('posts.index', compact('posts', 'video_id'));
     }
