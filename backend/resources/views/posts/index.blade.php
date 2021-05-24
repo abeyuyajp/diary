@@ -7,7 +7,7 @@
         @if (!isset($search_result))
           <h1> Journaly TV </h1>
           <div class="movieBox">
-              <div class="thums">
+              <div class="thums mb-5">
                 <iframe class="video" src="https://www.youtube.com/embed/{{ $video_id }} " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="height: 40vh; width: 80%; border-radius: 20px;"></iframe>
               </div>
           </div>
