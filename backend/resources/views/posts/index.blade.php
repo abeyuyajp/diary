@@ -39,9 +39,6 @@
         @endforeach
     </div>
   </div>
-  <a href="{{ url('posts/create') }}" class="btn-club-green"  style="position: fixed; bottom: 10px; right: 6vw; padding: 6px 4px; border-radius: 20px; padding: 20px 25px; color: white;">
-    <i class="fas fa-pen fa-2x"></i>
-  </a>
   <!--ページネーション-->
   <div class="mx-auto mt-5" style="width: 150px;">
      <div class="col-md-4">
