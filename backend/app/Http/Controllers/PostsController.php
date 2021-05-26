@@ -35,7 +35,6 @@ class PostsController extends Controller
 
        $t = new CallYoutubeApi();
        $video = $t->searchVideos();
-       #$video_id = $video['id']['videoId'];
        $video_id = $video['snippet']['resourceId']['videoId'];
         
        return view('posts.index', compact('posts', 'video_id'));
@@ -51,35 +50,6 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
-    public function translate(Request $request)
-    {   
-        #if(!empty($request->before_translate)) {
-            #$translate = new TranslateClient(['key' => $this->api_key]);
-            #$lang = "en";
-            #$result = $translate->translate($request->before_translate, [
-                #'target' => $lang,
-            #]);
-            #$translation = $result['text'];
-            #return view('posts.create', compact('translation'));
-        #} else {
-            #return redirect()->back();
-        #}
-
-        if(!empty($request->before_translate)) {
-            $translate = new TranslateClient();
-            $lang = "en";
-            $result = $translate->translate($request->before_translate, [
-            'target' => $lang,
-            ]);
-            $translation = $result['text'];
-            #$json = json_encode($translation);
-            return response()->json(['translation'=>$translation]);
-            dd($translation);
-        } else {
-            return redirect()->back();
-        }
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -90,8 +60,8 @@ class PostsController extends Controller
     {
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'title' => ['required','regex:/^[a-zA-Z0-9]+$/'],
-            'text'  => ['required', 'regex:/^[a-zA-Z0-9]+$/'],
+            'title' => ['required', 'regex:/^[a-zA-Z0-9]|" "+$/'],
+            'text'  => ['required', 'regex:/^[a-zA-Z0-9]|" "+$/'],
         ]);
 
         //バリデーションエラー
@@ -108,10 +78,6 @@ class PostsController extends Controller
         }else{
             $filename="";
         }
-
-
-
-
 
         $posts = new Post;
         $posts->user_id    =    Auth::user()->id;
@@ -168,8 +134,8 @@ class PostsController extends Controller
     {   
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'title' => ['required','regex:/^[a-zA-Z0-9]+$/'],
-            'text'  => ['required', 'regex:/^[a-zA-Z0-9]+$/'],
+            'title' => ['required', 'regex:/^[a-zA-Z0-9]|" "+$/'],
+            'text'  => ['required', 'regex:/^[a-zA-Z0-9]|" "+$/'],
         ]);
 
         //バリデーションエラー

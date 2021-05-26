@@ -27,7 +27,6 @@ class TranslateController extends Controller
             'target' => $lang,
             ]);
             $translation = $result['text'];
-            #$json = json_encode($translation);
             return response()->json(['translation'=>$translation]);
         } else {
             return redirect()->back();
