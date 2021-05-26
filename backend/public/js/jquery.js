@@ -13,8 +13,8 @@ $(function () {
 
     }).done(function(data){
         $('#before-translate').empty();
-        //$('#after-translate').text(data.translation);
-        $('#after-translate').append(`<p>${data.translation}</p>`)
+        $('#after-translate').text(data.translation);
+        //$('#after-translate').append(`<p>${data.translation}</p>`)
 
       }).fail(function(){
         alert('error');
