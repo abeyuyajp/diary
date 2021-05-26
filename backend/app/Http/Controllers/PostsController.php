@@ -49,22 +49,32 @@ class PostsController extends Controller
     public function create(Request $request)
     {
         return view('posts.create');
-        
     }
 
     public function translate(Request $request)
     {   
+        #if(!empty($request->before_translate)) {
+            #$translate = new TranslateClient(['key' => $this->api_key]);
+            #$lang = "en";
+            #$result = $translate->translate($request->before_translate, [
+                #'target' => $lang,
+            #]);
+            #$translation = $result['text'];
+            #return view('posts.create', compact('translation'));
+        #} else {
+            #return redirect()->back();
+        #}
+
         if(!empty($request->before_translate)) {
-            $translate = new TranslateClient(['key' => $this->api_key]);
+            $translate = new TranslateClient();
             $lang = "en";
             $result = $translate->translate($request->before_translate, [
-                'target' => $lang,
+            'target' => $lang,
             ]);
-            $translation = $result['text'];
-            #return redirect()->back()
-                #->withInput()
-                #->with('translation', $translation);
-            return view('posts.create', compact('translation'));
+            $translation = $result['text'];
+            #$json = json_encode($translation);
+            return response()->json(['translation'=>$translation]);
+            dd($translation);
         } else {
             return redirect()->back();
         }
