@@ -56,3 +56,10 @@
   #sbtn5:hover{
   color:#7fbfff;
   }
+
+  #button_fixed_create {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 6px 4px;
+  }
