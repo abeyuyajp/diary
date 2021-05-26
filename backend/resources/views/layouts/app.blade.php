@@ -79,7 +79,7 @@
                                     </form>
                                 </div>
                             </li>
-                            <a href="{{ url('posts/create') }}" class="btn btn-club-green mb-3">投稿</a>
+                            <!--a href="{{ url('posts/create') }}" class="btn btn-club-green mb-3">投稿</a-->
                         @endguest
                     </ul>
                 </div>
@@ -89,6 +89,10 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <!-- 追従投稿ボタン -->
+        <a href="{{ url('posts/create') }}" class="btn-club-green"  style="position: fixed; bottom: 10px; right: 12vw; padding: 6px 4px; border-radius: 20px; padding: 6px 20px; color: white; text-decoration: none;">
+            <strong style="font-size: 20px;">＋ New post</strong>
+        </a>
     </div>
 </body>
 </html>
