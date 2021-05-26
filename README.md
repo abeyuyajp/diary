@@ -44,10 +44,10 @@
 ## 機能一覧
 ### ユーザー機能
 * 新規登録、ログイン、ログアウト、パスワード変更
-<span style="color: #27AE60;">### 翻訳機能(Google Cloud Translation API連携)</span>
+### 翻訳機能(Google Cloud Translation API連携)
 * 非同期通信
 * 日本語から英語に翻訳
-<span style="color: #27AE60;">### YouTube API連携</span>
+### YouTube API連携
 * 世界の旅人のVLOG埋め込み
 * ページを更新すると再生リストの中からランダムで表示される
 ### 投稿機能
