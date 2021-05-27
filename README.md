@@ -30,6 +30,7 @@
   * Laravel 6.x
 * フロントエンド
   * HTML/CSS/Sass/Bootstrap
+  * Jquery
   * Node.js
   * レスポンシブ対応
 * インフラ
