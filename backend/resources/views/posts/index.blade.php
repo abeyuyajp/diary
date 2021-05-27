@@ -44,18 +44,33 @@
     </div>
 
     <!--ページネーション-->
-    <div class="mx-auto mt-5" style="width: 150px;">
+    <div class="mx-auto mt-4" style="width: 150px; margin-bottom: 20vh">
         <div class="col-md-4">
             {{ $posts->appends(request()->input())->links() }}
         </div>
     </div>
 
     <!-- 追従投稿ボタン -->
-    <div>
-        <a href="{{ url('posts/create') }}" class="btn-club-green"  style="position: fixed; bottom: 10px; right: 12vw; padding: 6px 4px; border-radius: 20px; padding: 6px 20px; color: white; text-decoration: none;">
+    <div style="display: flex;">
+        <a href="{{ url('posts/create') }}" class="btn-club-green" 
+        style= "position: fixed;
+                width: 200px;
+                height: 44px;
+                line-height: 44px;
+                left:50%;
+                bottom: 5vh;
+                margin-left:-100px;
+                display: block;
+                color: #fff;
+                text-align: center;
+                text-decoration: none;
+                font-size:12px;
+                border-radius: 20px;
+                ">
             <strong style="font-size: 20px;">＋ New post</strong>
         </a>
     </div>
+    
 </div>
 @endsection
 
