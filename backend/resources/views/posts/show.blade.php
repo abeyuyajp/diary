@@ -14,7 +14,7 @@
                           <p class="card-text"><small class="text-muted">{{ $post->created_at->format('Y/m/d H:i') }}</small></p>
                           <ul class="navbar-nav">
                               <li class="nav-item dropdown" style="list-style: none;">
-                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 25px;">
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 25px; color: #5476AA;">
                                   </a>
                                   <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="border-radius: 20px;">
                                       <a class="dropdown-item" href="{{ url('posts/' . $post->id . '/edit') }}">編集する</a>
