@@ -62,6 +62,12 @@
                 </div>
             </div>
         </div>
+        <!-- 追従投稿ボタン -->
+        <div>
+            <a href="{{ url('posts/create') }}" class="btn-club-green"  style="position: fixed; bottom: 10px; right: 12vw; padding: 6px 4px; border-radius: 20px; padding: 6px 20px; color: white; text-decoration: none;">
+                <strong style="font-size: 20px;">＋ New post</strong>
+            </a>
+        </div>
     </div>
 </div>
 @endsection
