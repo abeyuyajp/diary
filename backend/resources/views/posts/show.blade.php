@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card mb-5" style="border-radius: 20px;">
               @if(!empty($post->image))
-                <img src="{{ asset('storage/image/' . $post->image) }}" class="card-img-top" width="100%" height="40%" style="border-radius: 20px 20px 0 0;">
+                <img src="{{ asset('storage/image/' . $post->image) }}" class="card-img-top" style="border-radius: 20px 20px 0 0;">
               @endif
                 <div class="card-body">
                     <h1 class="card-title">{{ $post->title }}</h1>
@@ -14,7 +14,7 @@
                           <p class="card-text"><small class="text-muted">{{ $post->created_at->format('Y/m/d H:i') }}</small></p>
                           <ul class="navbar-nav">
                               <li class="nav-item dropdown" style="list-style: none;">
-                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 25px;">
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 25px; color: #5476AA;">
                                   </a>
                                   <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="border-radius: 20px;">
                                       <a class="dropdown-item" href="{{ url('posts/' . $post->id . '/edit') }}">編集する</a>

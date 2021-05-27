@@ -29,14 +29,14 @@
                             <label for="text" class="control-label">テキスト</label>
                             <textarea class="form-control" name="text" style="padding-bottom: 20vh; border-radius: 20px;"></textarea>
                         </div>
-                        <button class="btn btn-club-green d-block" type="submit" style="margin: 0 auto;">投稿</button>
+                        <button class="btn btn-club-green d-block" type="submit" style="margin: 0 auto;">GO</button>
                     </form>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="sidebar_content">
-                <div class="card mt-5" style="border-radius: 20px;">
+                <div class="card" style="border-radius: 20px;">
                     <div class="card-body">
                         <form action="{{route('translate.translate')}}" method="post" id="translate-form">
                             @csrf
@@ -52,7 +52,10 @@
                         </form>
                     </div>
                 </div>
-                <div class="card mt-5" style="border-radius: 20px;">
+                <div class="mt-3 text-center">
+                    <i class="fas fa-angle-double-down fa-2x" style="color: #5476AA;"></i>
+                </div>
+                <div class="card mt-3" style="border-radius: 20px;">
                     <div class="card-body">
                         <div class="form-group" id="after-translate">
                             <label for="text" class="control-label">English</label>
