@@ -51,9 +51,8 @@
     </div>
 
     <!-- 追従投稿ボタン -->
-    <div style="display: flex;">
-        <a href="{{ url('posts/create') }}" class="btn-club-green" 
-        style= "position: fixed;
+    <a href="{{ url('posts/create') }}" class="btn-club-green" 
+       style= " position: fixed;
                 width: 200px;
                 height: 44px;
                 line-height: 44px;
@@ -68,9 +67,7 @@
                 border-radius: 20px;
                 ">
             <strong style="font-size: 20px;">＋ New post</strong>
-        </a>
-    </div>
-    
+    </a>
 </div>
 @endsection
 
